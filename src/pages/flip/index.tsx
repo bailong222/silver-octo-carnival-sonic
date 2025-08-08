@@ -436,7 +436,7 @@ function CoinFlipGame() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setBet('40')}
+                  onClick={() => setBet('69')}
                   className={`
                     col-span-1
                     px-2 py-3
@@ -445,7 +445,7 @@ function CoinFlipGame() {
                     rounded-xl
                     shadow-lg
                     transition-all duration-300 ease-in-out
-                    ${bet === '40' ? 'border-3 border-white' : 'border-3 border-transparent'}
+                    ${bet === '69' ? 'border-3 border-white' : 'border-3 border-transparent'}
                     hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700
                     hover:shadow-xl hover:-translate-y-1
                     active:scale-95 active:shadow-inner
