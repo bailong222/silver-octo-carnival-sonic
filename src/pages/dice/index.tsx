@@ -489,7 +489,7 @@ function Roll() {
         <PlayerEvents/>
         <div className='flex flex-row justify-between mt-2 text-white items-center'>
         <p>Your withdrawable balance: {formatEther(withdrawableBalance)} S</p>
-        <button className='text-white bg-green-700 p-1 px-2 rounded'>Withdraw</button>
+        <button className='text-white bg-green-700 p-1 px-2 rounded' onClick={handleWithdrawAndPlayAgain}>Withdraw</button>
         </div>
       </Modal>
         </>
