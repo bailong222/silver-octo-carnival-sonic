@@ -43,6 +43,14 @@ function CoinFlipGame() {
       }
     }, [showResultScreen, outcome]);
 
+  useEffect(() => {
+      if (showResultScreen && !outcome?.won) {
+        const audio = new window.Audio('/fail.mp3');
+        audio.volume = 0.5;
+        audio.play();
+      }
+    }, [showResultScreen, outcome]);
+
   const closeModal = () => {
     setIsHowToPlayModalOpen(false);
     setIsBetsModalOpen(false);

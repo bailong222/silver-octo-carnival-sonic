@@ -56,10 +56,11 @@ const ROLL_EVENT_ABI = [
   }
 ];
 
-const ROLL_EVENT_TOPIC0 = "0x8def3bc2223262ccdecfbbf07303396df9ea44d00ed3c9d65c010ce88c46b58b";
+const ROLL_EVENT_TOPIC0 = "0x9d4f0f00f06d0c9cb3a6b4425bf3a6537017a58de4a32674770bc910693d2158";
 
 // Contract addresses
-const CONTRACT_ADDRESS = "0xEDa212D52BDbaC5BBde136b4f19F988d7B05b59a";
+const DICE_CONTRACT_ADDRESS = "0xD288c47feFE57f84607aA43F705F388D2aE900eC";
+const COINFLIP_CONTRACT_ADDRESS = "0x8d89670fE63E55b19B9C49972371D89451a94c10";
 
 const ETHERSCAN_API_KEY = '8JZEIVVIWPKAZYX9DFGBDXEKIHFP9VR5TW';
 const POLLING_INTERVAL = 5000;
@@ -138,7 +139,8 @@ const CombinedGameEvents: React.FC = () => {
       try {
         // Fetch events from both contracts
         const [diceResult, coinflipResult] = await Promise.all([
-          fetchEventsForContract(CONTRACT_ADDRESS, 'casino', lastDiceBlock),
+          fetchEventsForContract(DICE_CONTRACT_ADDRESS, 'dice', lastDiceBlock),
+          fetchEventsForContract(COINFLIP_CONTRACT_ADDRESS, 'coinflip', lastCoinflipBlock)
         ]);
 
         const allNewEvents = [...diceResult.events, ...coinflipResult.events];

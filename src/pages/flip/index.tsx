@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAccount, useWriteContract, useWaitForTransactionReceipt, useWatchContractEvent} from 'wagmi';
 import { parseEther, Hex, formatEther } from 'viem';
-import { ABI } from "../../../components/coinflip-abi";
+import { ABI } from "../../../components/abi";
 import Image from 'next/image';
 import { readContract } from '@wagmi/core';
 import { config } from '../../wagmi';
@@ -10,10 +10,9 @@ import Head from 'next/head';
 import Modal from '../../../components/Modal';
 import { useRouter } from 'next/router';
 import PlayerEvents from "../../../components/coinflipPlayerEvents";
-import CombinedGameEvents from "../../../components/combined-events";
 import Link from 'next/link';
 
-const COIN_CONTRACT_ADDRESS: Hex = "0x8d89670fE63E55b19B9C49972371D89451a94c10";
+const COIN_CONTRACT_ADDRESS: Hex = "0xEDa212D52BDbaC5BBde136b4f19F988d7B05b59a";
 
 function CoinFlipGame() {
   const { address: playerAddress, isConnected } = useAccount();
@@ -49,7 +48,7 @@ function CoinFlipGame() {
       const balance = await readContract(config, {
         abi: ABI,
         address: COIN_CONTRACT_ADDRESS,
-        functionName: 'getPlayerBalance',
+        functionName: 'playerBalances',
         args: [playerAddress],
       });
       setWithdrawableBalance(balance as bigint);
@@ -111,7 +110,7 @@ function CoinFlipGame() {
       await flip({
         abi: ABI,
         address: COIN_CONTRACT_ADDRESS,
-        functionName: 'flip',
+        functionName: 'playCoin',
         args: [BigInt(choice)],
         value: parseEther(bet),
       });
@@ -194,6 +193,14 @@ function CoinFlipGame() {
       audio.play();
     }
   }, [showResultScreen, outcome]);
+
+  useEffect(() => {
+      if (showResultScreen && !outcome?.won) {
+        const audio = new window.Audio('/fail.mp3');
+        audio.volume = 0.5;
+        audio.play();
+      }
+    }, [showResultScreen, outcome]);
 
   const router = useRouter(); // Initialize the router
   const { modal } = router.query; // Destructure the 'modal' query parameter

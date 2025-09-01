@@ -56,10 +56,10 @@ const ROLL_EVENT_ABI = [
 ];
 
 // Calculate the event topic0 (Keccak-256 hash of the signature)
-const ROLL_EVENT_TOPIC0 = "0x9d4f0f00f06d0c9cb3a6b4425bf3a6537017a58de4a32674770bc910693d2158";
+const ROLL_EVENT_TOPIC0 = "0x8def3bc2223262ccdecfbbf07303396df9ea44d00ed3c9d65c010ce88c46b58b";
 
 // Replace with your actual contract address on Polygon
-const CONTRACT_ADDRESS = "0xD288c47feFE57f84607aA43F705F388D2aE900eC"; 
+const CONTRACT_ADDRESS = "0xEDa212D52BDbaC5BBde136b4f19F988d7B05b59a"; 
 
 // Accessing API key using import.meta.env, as specified for Vite
 const ETHERSCAN_API_KEY = '8JZEIVVIWPKAZYX9DFGBDXEKIHFP9VR5TW';

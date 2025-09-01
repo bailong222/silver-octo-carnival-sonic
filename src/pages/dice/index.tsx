@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Range } from 'react-range';
 import { useAccount, useWriteContract, useWaitForTransactionReceipt, useWatchContractEvent, useBalance } from 'wagmi';
 import { parseEther, Hex, formatEther } from 'viem';
-import { ABI } from "../../../components/dice-abi";
+import { ABI } from "../../../components/abi";
 import { readContract } from '@wagmi/core';
 import {config} from "../../wagmi"
 import Image from "next/image";
@@ -13,7 +13,7 @@ import Head from "next/head";
 import CombinedGameEvents from "../../../components/combined-events"
 import Link from "next/link";
 
-const CONTRACT_ADDRESS: Hex = "0xD288c47feFE57f84607aA43F705F388D2aE900eC";
+const CONTRACT_ADDRESS: Hex = "0xEDa212D52BDbaC5BBde136b4f19F988d7B05b59a";
 
 function Roll() {
     const [winChance, setWinChance] = useState(50);
@@ -55,7 +55,7 @@ function Roll() {
       const balance = await readContract(config, {
         abi: ABI,
         address: CONTRACT_ADDRESS,
-        functionName: 'getPlayerBalance',
+        functionName: 'playerBalances',
         args: [playerAddress],
       });
       setWithdrawableBalance(balance as bigint);
@@ -122,7 +122,7 @@ function Roll() {
             await flip({
                 abi: ABI,
                 address: CONTRACT_ADDRESS,
-                functionName: 'flip',
+                functionName: 'playDice',
                 args: [BigInt(winChance)],
                 value: parseEther(bet),
             }); 

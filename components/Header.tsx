@@ -134,6 +134,26 @@ function Header() {
                   >
                     Sei
                   </Link>
+                  <Link
+                    href="https://ape.broflip.com"
+                    target="_blank"
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => {
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Ape
+                  </Link>
+                  <Link
+                    href="https://op.broflip.com"
+                    target="_blank"
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => {
+                      setIsDropdownOpen(false);
+                    }}
+                  >
+                    Optimism
+                  </Link>
                 </div>
               </div>
             )}

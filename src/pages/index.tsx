@@ -44,7 +44,7 @@ function CoinFlipGame() {
           <div className="relative mb-8">
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
             <Image 
-              src="/favicon.png" 
+              src="/bitcoine.svg" 
               height={200} 
               width={200} 
               alt='coin'
